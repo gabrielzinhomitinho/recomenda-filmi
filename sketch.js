@@ -1,5 +1,5 @@
 let idadeUsuario;
-let gostaFantasia, gostaAventura, gostaTerror, gostaAção;
+let gostaRPG, gostaFPS, gostaTerror, gostaSobrevivência;
 let filmesRecomendados = [];
 
 function setup() {
@@ -7,24 +7,24 @@ function setup() {
  background(240);
  textSize(16);
  fill(50);
- text("Recomendador de Filmes", 20, 30);
+ text("Recomendador de Jogos", 20, 30);
  // Coletar idade
  idadeUsuario = int(prompt("Qual sua idade?"));
  // Coletar preferências
- gostaFantasia = prompt("Você gosta de filmes de fantasia? (sim/não)").toLowerCase() === "sim";
- gostaAventura = prompt("Você gosta de filmes de aventura? (sim/não)").toLowerCase() === "sim";
- gostaTerror = prompt("Você gosta de filmes de terror? (sim/não)").toLowerCase() === 
+ gostaRPG = prompt("Você gosta de jogos RPG? (sim/não)").toLowerCase() === "sim";
+ gostaFPS = prompt("Você gosta de jogos de FPS? (sim/não)").toLowerCase() === "sim";
+ gostaTerror = prompt("Você gosta de jogos de terror? (sim/não)").toLowerCase() === 
 "sim";
- gostaAção = prompt("Você gosta de filmes de Ação? (sim/não)").toLowerCase() 
+ gostaSobrevivência = prompt("Você gosta de jogos de sobrevivência? (sim/não)").toLowerCase() 
 === "sim"; 
   
    for (let filme of filmes) {
  if (idadeUsuario >= filme.idade) {
  if (
- (gostaFantasia && filme.categorias.includes("fantasia")) ||
- (gostaAventura && filme.categorias.includes("aventura")) ||
+ (gostaRPG && filme.categorias.includes("RPG")) ||
+ (gostaFPS && filme.categorias.includes("FPS")) ||
  (gostaTerror && filme.categorias.includes("terror")) ||
- (gostaAção && filme.categorias.includes("ação"))
+ (gostaSobrevivência && filme.categorias.includes("sobrevivência"))
  ) {
  filmesRecomendados.push(filme.nome);
  }
@@ -32,23 +32,22 @@ function setup() {
  }
 
    if (filmesRecomendados.length > 0) {
- text("Filmes recomendados para você:", 20, 70);
+ text("Jogos recomendados para você:", 20, 70);
  for (let i = 0; i < filmesRecomendados.length; i++) {
  text("- " + filmesRecomendados[i], 40, 100 + i * 25);
  }
  } else {
- text("Nenhum filme disponível para sua idade e preferências.", 20, 70);
+ text("Nenhum jogo disponível para sua idade e preferências.", 20, 70);
  }
 }
 
   let filmes = [
- { nome: "1917", idade: 14, categorias: ["ação"] },
- { nome: "Paddington", idade: 0, categorias: ["fantasia", "aventura"] },
- { nome: "A História Sem Fim", idade: 10, categorias: ["drama", "fantasia", 
-"aventura"] },
- { nome: "Senhor dos Anéis: A Sociedade do Anel", idade: 12, categorias: ["fantasia", "aventura"] },
- { nome: "Corra!", idade: 16, categorias: ["terror"] },
- { nome: "O Exorcista", idade: 14, categorias: ["terror"] },
- { nome: "Star Wars: Uma Nova Esperança", idade: 12, categorias: ["ação", "fantasia"] },
- { nome: "Interestelar", idade: 0, categorias: ["aventura"] },   
+ { nome: "Call of Duty BO2", idade: 10, categorias: ["FPS"] },
+ { nome: "Battlefield 1", idade: 10, categorias: ["FPS"] },
+ { nome: "Fallout 4", idade: 10, categorias: ["RPG"] },
+ { nome: "Skyrim", idade: 10, categorias: ["RPG"] },
+ { nome: "Outlast", idade: 16, categorias: ["terror"] },
+ { nome: "Alien Isolation", idade: 14, categorias: ["terror"] },
+ { nome: "Terraria", idade: 10, categorias: ["sobrevivência"] },
+ { nome: "Minecraft", idade: 0, categorias: ["sobrevivência"] },   
 ]
